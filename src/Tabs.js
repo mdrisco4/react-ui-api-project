@@ -1,155 +1,119 @@
-
-
-// import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-
-// import Tab from './Tab';
-
-// class Tabs extends Component {
-//     static propTypes = {
-//         children: PropTypes.instanceOf(Array).isRequired,
-//     }
-    
-//     constructor(props) {
-//         super(props);
-        
-//         this.state = {
-//             activeTab: this.props.children[0].props.label,
-//         };
-//     }
-    
-//     onClickTabItem = (tab) => {
-//         this.setState({ activeTab: tab });
-//     }
-    
-//     render() {
-//         const {
-//             onClickTabItem,
-//             props: {
-//                 children,
-//             },
-//             state: {
-//                 activeTab,
-//             }
-//         } = this;
-        
-//         return (
-//             <div className="tabs">
-//         <ol className="tab-list">
-//           {children.map((child) => {
-//               const { label } = child.props;
-              
-//               return (
-//                   <Tab
-//                   activeTab={activeTab}
-//                   key={label}
-//                   label={label}
-//                   onClick={onClickTabItem}
-//                   />
-//                   );
-//                 })}
-//         </ol>
-//         <div className="tab-content">
-//           {children.map((child) => {
-//               if (child.props.label !== activeTab) return undefined;
-//               return child.props.children;
-//             })}
-//         </div>
-//       </div>
-//     );
-// }
-// }
-
-// export default Tabs;
-
-
-
-// import React, { Component } from 'react';
-// export class Tabs extends Component {
-  
-//     constructor(props, context) {
-//         super(props, context);
-//         this.state = {
-//             activeTabIndex: this.props.defaultActiveTabIndex
-//         };
-//         this.handleTabClick = this.handleTabClick.bind(this);
-//     }
-  
-//     // Toggle currently active tab
-//     handleTabClick(tabIndex) {
-//         this.setState({
-//             activeTabIndex: tabIndex === this.state.activeTabIndex ? this.props.defaultActiveTabIndex : tabIndex
-//         });
-//     }
-  
-//     // Encapsulate <Tabs/> component API as props for <Tab/> children
-//     renderChildrenWithTabsApiAsProps() {
-//         return React.Children.map(this.props.children, (child, index) => {
-//             return React.cloneElement(child, {
-//                 onClick : this.handleTabClick,
-//                 tabIndex: index,
-//                 isActive: index === this.state.activeTabIndex
-//             });
-//         });
-//     }
-  
-//     // Render current active tab content
-//     renderActiveTabContent() {
-//         const {children} = this.props;
-//         const {activeTabIndex} = this.state;
-//         if(children[activeTabIndex]) {
-//             return children[activeTabIndex].props.children;
-//         }
-//     }
-  
-//     render() {
-//         return (
-//             <div className="tabs">
-//                 <ul className="tabs-nav nav navbar-nav navbar-left">
-//                     {this.renderChildrenWithTabsApiAsProps()}
-//                 </ul>
-//                 <div className="tabs-active-content">
-//                     {this.renderActiveTabContent()}
-//                 </div>
-//             </div>
-//         );
-//     }
-// };
-
-// export default Tabs;
-
-
-
-
-
-
-
-
-
 import React, { Component } from 'react';
-import Tab from './Tab';
+// import Tab from './Tab';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
 
 
 
-class Tabs extends Component {
-    constructor(props) {
-        super(props);
-                
+
+
+
+
+
+
+class Tabs1 extends Component {
+    constructor() {
+        super();
         this.state = {
-            activeTab: ''
+          artist: '',
+          songs: []
+    
         };
+
+        // this.callSong = this.callSong.bind(this)
     }
+componentDidMount() {         
+        fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
+            .then(res => res.json())
+            .then(songInfo => {
+                // console.log(songInfo)
+                this.setState({ artist: [songInfo[0].artist.name] });
+                
+                 songInfo.forEach(infoPack => {
+                    this.state.songs.push(infoPack.title)    
+                    const items = this.state.songs.map((song) => {return <li>{song}</li> });                
+                    
+                })
+                
+             })
+                console.log(this.state.artist)
+                console.log(this.state.songs)
+     }
+    // populateSongs() {
+    //     const items = this.state.songs.map((song) => {return <li>{song}</li> });
+    //     console.log(items)
+    // }        
+
+// componentDidMount() {         
+//     fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
+//         .then(res => res.json())
+//         .then(songInfo => {
+//             console.log(songInfo)
+//             this.setState({ artist: [songInfo[0].artist.name] })
+//             this.setState({ songs: [songInfo[0].title] })
+            
+//             console.log(this.state.artist)
+//             console.log(this.state.songs)
+//             console.log(songInfo[0].chordsPresent)
+//             })
+//         }
+    
+    
+
 
 
     render() {
-        return (
-            <div>
-                <p>some other stuff</p>
-                  <Tab />
+            const items = this.state.songs.map((song) => {return <li>{song}</li> });
+            console.log(items)
+            const displayPosts = (
+              <Tabs defaultIndex={0} /*onSelect={index => console.log(index)}*/>
 
+
+            <TabList>
+              <Tab>{ this.state.artist }</Tab>
+              <Tab>title2</Tab>
+              <Tab>title3</Tab>
+              <Tab>title4</Tab>
+              <Tab>title5</Tab>
+              <Tab>title6</Tab>
+              <Tab>title7</Tab>
+            </TabList>
+      
+            <TabPanel>
+              {/* <h2>{ this.state.songs }</h2> */}
+              <ul>
+                  { items }
+              </ul>
+            </TabPanel>
+            <TabPanel>
+              <h2>things2</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>things3</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>things4</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>things5</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>things6</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>things7</h2>
+            </TabPanel>
+          </Tabs>
+          )
+          return (
+              <div>
+                <button className="randButton" onClick={this.callSong}>click me</button>
+                <button className="songButton" onClick={this.populateSongs}>click me</button>
+                <p>some other stuff</p>
+                  {displayPosts}
             </div>
         );
     }
 }
 
-export default Tabs;
+export default Tabs1;
