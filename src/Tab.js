@@ -6,7 +6,7 @@ class Tab extends Component {
     render() {
         return (
             <div>
-                <p>hi</p>
+                <p>{this.props.item}</p>
             </div>
         );
     }

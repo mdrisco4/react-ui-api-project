@@ -41,6 +41,7 @@ componentDidMount() {
     <div>
       <h2>Music API</h2>
       <Tabs artist={this.state.artist} songs={this.state.songs}/>
+      {/* <Tab songs={this.state.songs}/> */}
     </div>
     );
   }
