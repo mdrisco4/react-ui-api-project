@@ -33,15 +33,28 @@ componentDidMount() {
                     this.state.songs.push(infoPack.title)                    
                 })
              })
-                console.log(this.state.artist)
-                console.log(this.state.songs)
+                // console.log(this.state.artist)
+                // console.log(this.state.songs)
              }
-            
+// callSong() {         
+//                 fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
+//                     .then(res => res.json())
+//                     .then(songInfo => {
+//                         // console.log(songInfo)
+//                         this.setState({ artist: [songInfo[0].artist.name] });
+                        
+//                          songInfo.forEach(infoPack => {
+//                             this.state.songs.push(infoPack.title)                    
+//                         })
+//                      })
+//                         // console.log(this.state.artist)
+//                         // console.log(this.state.songs)
+//                      }
 
 
 
     render() {
-            console.log(this.state.songs)
+            console.log(this.props.songs)
             const items = this.state.songs.map((song) => {return <li>{song}</li> });
             console.log(items)
             const displayPosts = (
