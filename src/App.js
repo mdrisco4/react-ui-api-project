@@ -7,22 +7,30 @@ import 'react-tabs/style/react-tabs.css'
 
 
 
-
-// randButton.addEventListener("click", function () {
-//   fetch("http://www.songsterr.com/a/wa/song?id={id}")
-//       .then(res => res.json())
-//       .then(songInfo => {
-//           console.log(songInfo)
-//       })
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
-      posts: []
+      artist: '',
+      songs: []
 
     };
-  }
+}
+componentDidMount() {         
+    fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
+        .then(res => res.json())
+        .then(songInfo => {
+            // console.log(songInfo)
+            this.setState({ artist: [songInfo[0].artist.name] });
+            
+             songInfo.forEach(infoPack => {
+                this.state.songs.push(infoPack.title)    
+              })
+           })
+            // console.log(this.state.artist)
+            // console.log(this.state.songs)
+ }
 
 
 
@@ -31,8 +39,8 @@ class App extends Component {
     
   return (
     <div>
-      <h2>things and stuff</h2>
-      <Tabs />
+      <h2>Music API</h2>
+      <Tabs artist={this.state.artist} songs={this.state.songs}/>
     </div>
     );
   }

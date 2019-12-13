@@ -5,72 +5,27 @@ import 'react-tabs/style/react-tabs.css'
 
 
 
-
-
-
-
-
-
 class Tabs1 extends Component {
-    constructor() {
-        super();
-        this.state = {
-          artist: '',
-          songs: []
+
     
-        };
-
-        // this.callSong = this.callSong.bind(this)
-    }
-componentDidMount() {         
-        fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
-            .then(res => res.json())
-            .then(songInfo => {
-                // console.log(songInfo)
-                this.setState({ artist: [songInfo[0].artist.name] });
-                
-                 songInfo.forEach(infoPack => {
-                    this.state.songs.push(infoPack.title)    
-                    const items = this.state.songs.map((song) => {return <li>{song}</li> });                
-                    
-                })
-                
-             })
-                console.log(this.state.artist)
-                console.log(this.state.songs)
-     }
-    // populateSongs() {
-    //     const items = this.state.songs.map((song) => {return <li>{song}</li> });
-    //     console.log(items)
-    // }        
-
-// componentDidMount() {         
-//     fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
-//         .then(res => res.json())
-//         .then(songInfo => {
-//             console.log(songInfo)
-//             this.setState({ artist: [songInfo[0].artist.name] })
-//             this.setState({ songs: [songInfo[0].title] })
-            
-//             console.log(this.state.artist)
-//             console.log(this.state.songs)
-//             console.log(songInfo[0].chordsPresent)
-//             })
-//         }
-    
-    
-
-
-
     render() {
-            const items = this.state.songs.map((song) => {return <li>{song}</li> });
+    console.log(this.props.songs)
+    const items = this.props.songs.map((song, i) => 
+    {return <li>{song}</li> });
+    // {return <li 
+    //     item={song}
+    //     key={i}>
+    //     </li> });
             console.log(items)
+
+
+
             const displayPosts = (
               <Tabs defaultIndex={0} /*onSelect={index => console.log(index)}*/>
 
 
             <TabList>
-              <Tab>{ this.state.artist }</Tab>
+              <Tab>{ this.props.artist }</Tab>
               <Tab>title2</Tab>
               <Tab>title3</Tab>
               <Tab>title4</Tab>
@@ -109,7 +64,7 @@ componentDidMount() {
               <div>
                 <button className="randButton" onClick={this.callSong}>click me</button>
                 <button className="songButton" onClick={this.populateSongs}>click me</button>
-                <p>some other stuff</p>
+                {/* <p>some other stuff</p> */}
                   {displayPosts}
             </div>
         );
