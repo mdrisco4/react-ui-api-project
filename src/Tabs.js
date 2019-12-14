@@ -1,68 +1,30 @@
 import React, { Component } from 'react';
 // import Tab from './Tab';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import 'react-tabs/style/react-tabs.css'
-
-
-
-
-
-
 
 
 
 class Tabs1 extends Component {
-    constructor() {
-        super();
-        this.state = {
-          artist: '',
-          songs: []
-    
-        };
-
-        // this.callSong = this.callSong.bind(this)
+    constructor(props) {
+        super(props)
     }
-componentDidMount() {         
-        fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
-            .then(res => res.json())
-            .then(songInfo => {
-                // console.log(songInfo)
-                this.setState({ artist: [songInfo[0].artist.name] });
-                
-                 songInfo.forEach(infoPack => {
-                    this.state.songs.push(infoPack.title)                    
-                })
-             })
-                // console.log(this.state.artist)
-                // console.log(this.state.songs)
-             }
-// callSong() {         
-//                 fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
-//                     .then(res => res.json())
-//                     .then(songInfo => {
-//                         // console.log(songInfo)
-//                         this.setState({ artist: [songInfo[0].artist.name] });
-                        
-//                          songInfo.forEach(infoPack => {
-//                             this.state.songs.push(infoPack.title)                    
-//                         })
-//                      })
-//                         // console.log(this.state.artist)
-//                         // console.log(this.state.songs)
-//                      }
-
-
-
+    
     render() {
-            console.log(this.props.songs)
-            const items = this.state.songs.map((song) => {return <li>{song}</li> });
+        console.log(this.props.songs)
+        console.log(this.props.totalRes)
+        const items = this.props.songs.map((song, i ) => {
+        return <li item={song} key={i}/> });
+
             console.log(items)
+
+
+
             const displayPosts = (
               <Tabs defaultIndex={0} /*onSelect={index => console.log(index)}*/>
 
 
             <TabList>
-              <Tab>{ this.state.artist }</Tab>
+              <Tab>{ this.props.artist }</Tab>
               <Tab>title2</Tab>
               <Tab>title3</Tab>
               <Tab>title4</Tab>
@@ -72,7 +34,6 @@ componentDidMount() {
             </TabList>
       
             <TabPanel>
-              {/* <h2>{ this.state.songs }</h2> */}
               <ul>
                   { items }
               </ul>
@@ -100,8 +61,8 @@ componentDidMount() {
           return (
               <div>
                 <button className="randButton" onClick={this.callSong}>click me</button>
-                <p>some other stuff</p>
-                  <Tab />
+                <button className="songButton" onClick={this.populateSongs}>click me</button>
+                {/* <p>some other stuff</p> */}
                   {displayPosts}
             </div>
         );
