@@ -15,7 +15,7 @@ class App extends Component {
       apiReturn: [],
       artist: '',
       songs: []
-
+      
     };
 }
 componentDidMount() {         
@@ -35,6 +35,11 @@ componentDidMount() {
               // console.log(songInfo[0].tabTypes[0])
            })
             // console.log(this.state.apiReturn)
+            let array = []
+            this.state.songs.forEach(song => {
+              array.push(song)
+            })
+            console.log(array)
             console.log(this.state.songs)
             console.log(this.state.songs[8])
             

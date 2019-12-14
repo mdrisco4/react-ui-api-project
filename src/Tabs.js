@@ -8,12 +8,39 @@ class Tabs1 extends Component {
     // constructor(props) {
     //     super(props)
     // }
-    
+    constructor() {
+        super();
+        this.state = {
+          apiReturn: [],
+          artist: '',
+          songs: []
+          
+        };
+    }
+        componentDidMount() {         
+            fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
+                .then(res => res.json())
+                .then(songInfo => {
+                    // this.setState({ apiReturn: [songInfo] })
+                    this.setState({ artist: [songInfo[0].artist.name] });
+                    songInfo.forEach(infoPack => {
+                      this.state.apiReturn.push(infoPack)    
+                    })
+                    songInfo.forEach(infoPack => {
+                        this.state.songs.push(infoPack.title)    
+                    })
+                })
+                console.log(this.state.songs)
+                console.log(this.props.songs)
+    }
+            
+
+
     render() {
         // console.log(this.props.songs)
         // console.log(this.props.totalRes)
-        const items = this.props.songs.map((song, i ) => {
-        return <li item={song} key={i}/> });
+        const items = this.state.songs.map((song, i ) => {
+        return <li>{song}</li> });
 
             // console.log(items)
 
