@@ -18,7 +18,7 @@ class Tabs1 extends Component {
         };
     }
         componentDidMount() {         
-            fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
+            fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Beatles")
                 .then(res => res.json())
                 .then(songInfo => {
                     // this.setState({ apiReturn: [songInfo] })
@@ -30,6 +30,7 @@ class Tabs1 extends Component {
                         this.state.songs.push(infoPack.title)    
                     })
                 })
+                console.log(this.state.apiReturn)
                 console.log(this.state.songs)
                 console.log(this.props.songs)
     }
