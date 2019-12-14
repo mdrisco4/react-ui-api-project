@@ -5,17 +5,17 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 
 class Tabs1 extends Component {
-    constructor(props) {
-        super(props)
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
     
     render() {
-        console.log(this.props.songs)
-        console.log(this.props.totalRes)
+        // console.log(this.props.songs)
+        // console.log(this.props.totalRes)
         const items = this.props.songs.map((song, i ) => {
         return <li item={song} key={i}/> });
 
-            console.log(items)
+            // console.log(items)
 
 
 

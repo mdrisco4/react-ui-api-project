@@ -29,26 +29,33 @@ componentDidMount() {
             })
             songInfo.forEach(infoPack => {
                 this.state.songs.push(infoPack.title)    
-              })
+            })
+              
+              console.log(songInfo[4].title)
               // console.log(songInfo[0].tabTypes[0])
            })
             // console.log(this.state.apiReturn)
-            // console.log(this.state.songs)
+            console.log(this.state.songs)
+            console.log(this.state.songs[8])
+            
+            // const thing = this.get(['this.state.songs', 11])
+            // console.log(thing)
  }
-
 
  
  render() {
+  //  let music = [...this.state.songs]
+  //  console.log(music)
    const items = this.state.songs.map((song, i ) => {
    return <li item={song} key={i}/> });
     
   return (
     <div>
       <h2>Music API</h2>
-      {/* <ul>
+      <ul>
         the
         { items }
-      </ul> */}
+      </ul>
       <Tabs artist={this.state.artist} songs={this.state.songs} totalRes={this.state.apiReturn}/>
       {/* <Tab songs={this.state.songs}/> */}
     </div>
