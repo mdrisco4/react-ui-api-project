@@ -23,3 +23,16 @@ class Header extends Component {
 }
 
 export default Header;
+
+
+
+
+
+// Marvel:
+//Public: 69be26d469c729fce76dafc0e7933d34
+//Private: 82f8e29ecde6f6c5421e8938a8a410da894103e9
+
+
+
+// LOTR API: 
+// key: ebLJsWLBf4omkXE9rDNr

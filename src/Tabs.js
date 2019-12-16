@@ -8,15 +8,8 @@ class Tabs1 extends Component {
     // constructor(props) {
     //     super(props)
     // }
-    constructor(props) {
-        super(props);
-        this.state = {
-          apiReturn: [],
-          artist: '',
-          songs: []
-          
-        };
-    }
+
+    
     //     componentDidMount() {         
     //         fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
     //             .then(res => res.json())
@@ -38,21 +31,13 @@ class Tabs1 extends Component {
 
 
     render() {
-        // console.log(this.props.songs)
-        // console.log(this.props.totalRes)
-        const items = this.props.songs.map((song, i ) => {
-        return <li>{song}</li> });
-
-            // console.log(items)
-
-
-
+   
             const displayPosts = (
               <Tabs defaultIndex={0} /*onSelect={index => console.log(index)}*/>
 
 
             <TabList>
-              <Tab>{ this.props.artist }</Tab>
+              <Tab>Pic of the Day</Tab>
               <Tab>title2</Tab>
               <Tab>title3</Tab>
               <Tab>title4</Tab>
@@ -63,9 +48,12 @@ class Tabs1 extends Component {
       
             <TabPanel>
               <ul>
-                  { items }
+                  
               </ul>
             </TabPanel>
+            <h3>{ this.props.title }</h3>
+            <img src={this.props.dailyPic}></img>
+            <h5>{ this.props.picExplain }fnik</h5>
             <TabPanel>
               <h2>things2</h2>
             </TabPanel>
