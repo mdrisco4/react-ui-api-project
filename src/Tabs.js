@@ -5,35 +5,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
 
 class Tabs1 extends Component {
-    // constructor(props) {
-    //     super(props)
-    // }
-
-    
-    //     componentDidMount() {         
-    //         fetch("http://www.songsterr.com/a/ra/songs.json?pattern=Marley")
-    //             .then(res => res.json())
-    //             .then(songInfo => {
-    //                 // this.setState({ apiReturn: [songInfo] })
-    //                 this.setState({ artist: [songInfo[0].artist.name] });
-    //                 songInfo.forEach(infoPack => {
-    //                   this.state.apiReturn.push(infoPack)    
-    //                 })
-    //                 songInfo.forEach(infoPack => {
-    //                     this.state.songs.push(infoPack.title)    
-    //                 })
-    //             })
-    //             console.log(this.state.apiReturn)
-    //             console.log(this.state.songs)
-    //             console.log(this.props.songs)
-    // }
-            
-
 
     render() {
-        const marsItems = this.props.roverPics.map((image, i ) => {
-            return <img item={image} key={i}/> });
-        console.log(this.props.roverPics)
+        // const marsItems = this.props.roverPics.map((image, i ) => {
+        //     return <img item={image} key={i}/> });
+        // const marsPhotos = []
+        // for (let i = 1; i < this.props.roverPics; i++) {
+        //     marsPhotos.push(this.props.roverPics[i].img_src)
+        // }
             const displayPosts = (
               <Tabs defaultIndex={0} /*onSelect={index => console.log(index)}*/>
 
@@ -50,37 +29,45 @@ class Tabs1 extends Component {
       
             <TabPanel>
                 <h3>{ this.props.title }</h3>
-                <img src={this.props.dailyPic} alt="Daily NASA stillshot"></img>
+                <img src={this.props.dailyPic} alt="Daily NASA Stillshot"></img>
                 <p>{ this.props.picExplain }</p>
             </TabPanel>
             <TabPanel>
-                <ul>
-                  {marsItems}
-                </ul>
-              <h2>things2</h2>
+                <h3>{ this.props.title2 }</h3>
+                <img src={this.props.dailyPic2} alt="Daily NASA Stillshot"></img>
+                <p>{ this.props.picExplain2 }</p>
             </TabPanel>
             <TabPanel>
-              <h2>things3</h2>
+                <h3>{ this.props.title3 }</h3>
+                <img src={this.props.dailyPic3} alt="Daily NASA Stillshot"></img>
+                <p>{ this.props.picExplain3 }</p>
             </TabPanel>
             <TabPanel>
-              <h2>things4</h2>
+                <h3>{ this.props.title4 }</h3>
+                <img src={this.props.dailyPic4} alt="Daily NASA Stillshot"></img>
+                <p>{ this.props.picExplain4 }</p>
             </TabPanel>
             <TabPanel>
-              <h2>things5</h2>
+                <h3>{ this.props.title5 }</h3>
+                <img src={this.props.dailyPic5} alt="Daily NASA Stillshot"></img>
+                <p>{ this.props.picExplain5 }</p>
             </TabPanel>
             <TabPanel>
-              <h2>things6</h2>
+                <h3>{ this.props.title6 }</h3>
+                <img src={this.props.dailyPic6} alt="Daily NASA Stillshot"></img>
+                <p>{ this.props.picExplain6 }</p>
             </TabPanel>
             <TabPanel>
-              <h2>things7</h2>
+                <h3>{ this.props.title7 }</h3>
+                <img src={this.props.dailyPic7} alt="Daily NASA Stillshot"></img>
+                <p>{ this.props.picExplain7 }</p>
             </TabPanel>
           </Tabs>
           )
           return (
               <div>
-                <button className="randButton" onClick={this.callSong}>click me</button>
-                <button className="songButton" onClick={this.populateSongs}>click me</button>
-                {/* <p>some other stuff</p> */}
+                {/* <button className="randButton" onClick={this.callSong}>click me</button>
+                <button classBuName="songtton" onClick={this.populateSongs}>click me</button> */}
                   {displayPosts}
             </div>
         );
