@@ -1,5 +1,5 @@
-.tab-list {
-    border-bottom: 1px solid #ccc;
+  .tab-list {
+    border-bottom: 1px solid red;
     padding-left: 0;
   }
   
@@ -8,10 +8,71 @@
     list-style: none;
     margin-bottom: -1px;
     padding: 0.5rem 0.75rem;
+    color: red;
   }
   
   .tab-list-active {
     background-color: white;
     border: solid #ccc;
     border-width: 1px 1px 0 1px;
+    color: red;
+  }
+
+  .react-tabs {
+      color: red;
+      border: 2px solid black;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    background-color: slateblue;
+    color: skyblue;
+    border: 2px solid black;
+    font-size: 18px;
+    margin: 0;
+}
+
+  h2 {
+      font-size: 72px;
+      margin: 0;
+      font-family: 'Righteous', cursive;
+      background-color: violet;
+      text-shadow: 2px 2px 5px red;
+  }
+  h3 {
+      color: sandybrown;
+      background-color: springgreen;
+      border: 6px solid springgreen;
+      height: 60px;
+      margin: 0;
+      font-size: 42px;
+      text-shadow: 2px 2px 5px red;
+      
+  }
+
+  img {
+      border: 0;
+      height: 80%;
+      width: auto;
+  }
+
+  .photo {
+    border: 0;
+    height: 80%;
+    width: auto;
+  }
+
+  /* span {
+      color: grey;
+      background-color: yellow;
+  } */
+
+  p {
+      background-color: blue;
+      color: darkorange;
+      margin: 0;
+      font-size: 20px;
   }

@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
 // import Tab from './Tab';
+import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import './styles.css'
 
 
 
@@ -18,18 +19,18 @@ class Tabs1 extends Component {
 
 
             <TabList>
-              <Tab>Pic of the Day</Tab>
-              <Tab>title2</Tab>
-              <Tab>title3</Tab>
-              <Tab>title4</Tab>
-              <Tab>title5</Tab>
-              <Tab>title6</Tab>
-              <Tab>title7</Tab>
+              <Tab><span>Pic of the Day</span></Tab>
+              <Tab><span>Yesterday's Pic</span></Tab>
+              <Tab><span>{ this.props.title3 }</span></Tab>
+              <Tab><span>{ this.props.title4 }</span></Tab>
+              <Tab><span>{ this.props.title5 }</span></Tab>
+              <Tab><span>{ this.props.title6 }</span></Tab>
+              <Tab><span>{ this.props.title7 }</span></Tab>
             </TabList>
       
             <TabPanel>
                 <h3>{ this.props.title }</h3>
-                <img src={this.props.dailyPic} alt="Daily NASA Stillshot"></img>
+                <img src={this.props.dailyPic} className="photos" alt="Daily NASA Stillshot"></img>
                 <p>{ this.props.picExplain }</p>
             </TabPanel>
             <TabPanel>
@@ -66,8 +67,10 @@ class Tabs1 extends Component {
           )
           return (
               <div>
-                {/* <button className="randButton" onClick={this.callSong}>click me</button>
-                <button classBuName="songtton" onClick={this.populateSongs}>click me</button> */}
+                {
+                /* <button className="randButton" onClick={this.callSong}>click me</button>
+                <button classBuName="songtton" onClick={this.populateSongs}>click me</button> */
+                }
                   {displayPosts}
             </div>
         );

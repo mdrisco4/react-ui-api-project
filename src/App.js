@@ -55,6 +55,8 @@ class App extends Component {
       .then(data => {
         this.setState({ picOfTheDay: [data.hdurl] })
         this.setState({ explanation: [data.explanation] })
+        this.setState({ title: [data.title] })
+        console.log(data)
       })     
       fetch("https://api.nasa.gov/planetary/apod?date=2019-12-15&api_key=" + apiKey) 
       .then(res => res.json())
@@ -128,11 +130,10 @@ class App extends Component {
 }
  
 
-
- render() {
+render() {
   return (
     <div>
-      <h2>NASA API</h2>
+      <h2>DEEP SPACE IMAGES</h2>
       <Tabs 
         dailyPic={this.state.picOfTheDay} 
         picExplain={this.state.explanation} 
