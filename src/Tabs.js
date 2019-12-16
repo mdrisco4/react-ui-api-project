@@ -31,7 +31,9 @@ class Tabs1 extends Component {
 
 
     render() {
-   
+        const marsItems = this.props.roverPics.map((image, i ) => {
+            return <img item={image} key={i}/> });
+        console.log(this.props.roverPics)
             const displayPosts = (
               <Tabs defaultIndex={0} /*onSelect={index => console.log(index)}*/>
 
@@ -47,14 +49,14 @@ class Tabs1 extends Component {
             </TabList>
       
             <TabPanel>
-              <ul>
-                  
-              </ul>
+                <h3>{ this.props.title }</h3>
+                <img src={this.props.dailyPic} alt="Daily NASA stillshot"></img>
+                <p>{ this.props.picExplain }</p>
             </TabPanel>
-            <h3>{ this.props.title }</h3>
-            <img src={this.props.dailyPic}></img>
-            <h5>{ this.props.picExplain }fnik</h5>
             <TabPanel>
+                <ul>
+                  {marsItems}
+                </ul>
               <h2>things2</h2>
             </TabPanel>
             <TabPanel>

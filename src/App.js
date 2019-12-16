@@ -1,14 +1,3 @@
-// Marvel:
-//Public: 69be26d469c729fce76dafc0e7933d34
-//Private: 82f8e29ecde6f6c5421e8938a8a410da894103e9
-
-
-
-// LOTR API: 
-// key: ebLJsWLBf4omkXE9rDNr
-
-
-
 // NASA:
 // key: uYpSXkFSh81NlhPuloWyns6AomXuqDUHxqKk03kB
 // api_key=uYpSXkFSh81NlhPuloWyns6AomXuqDUHxqKk03kB
@@ -24,7 +13,7 @@ import 'react-tabs/style/react-tabs.css'
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 // import Header from './Header.js';
 
-
+const apiKey = "uYpSXkFSh81NlhPuloWyns6AomXuqDUHxqKk03kB"
 
 class App extends Component {
 
@@ -33,35 +22,56 @@ class App extends Component {
     this.state = {
       picOfTheDay: '',
       explanation: '',
-      title: ''
+      title: '',
+      neos: '',
+      marsPhotos: []
     };
 }
 
 
 
   componentDidMount() {         
-    fetch("https://api.nasa.gov/planetary/apod?api_key=uYpSXkFSh81NlhPuloWyns6AomXuqDUHxqKk03kB")
+    fetch("https://api.nasa.gov/planetary/apod?api_key=" + apiKey)
     // Headers: {Accept: 'application/json'}
     .then(res => res.json())
     .then(data => {
       this.setState({ picOfTheDay: [data.hdurl] })
       this.setState({ explanation: [data.explanation] })
       this.setState({ title: [data.title] })
-
-      console.log(data.hdurl)
-      console.log(data.explanation)
-      console.log(data.title)
-      console.log(data)
+      // console.log(data)
+    })      
+  fetch("https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-12-09&end_date=2019-12-15&api_key=" + apiKey)
+  .then(res => res.json())
+  .then(data => {
+    this.setState({ neos: [data] })
+    console.log(data)
+    console.log(data.near_earth_objects)
     })
+  fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=" + apiKey)
+  .then(res => res.json())
+  .then(data => {
+    this.setState({ marsPhotos: [data] })
+    // data.photos.forEach(pic => {
+    //   this.setState.marsPhotos.push(this.photos)
+    console.log(data)
+    console.log(data.photos)
+    this.setState({ marsPhotos: [...this.state.marsPhotos, ...data.photos ] })
+    });
+  // fetch("https://images-api.nasa.gov/asset&api_key=" + apiKey)
+  // .then(res => res.json())
+  // .then(data => {
+  //   // this.setState({ marsPhotos: [data] })
+  //   // data.photos.forEach(pic => {
+  //   //   this.setState.marsPhotos.push(this.photos)
+  //   console.log(data)
+  //   console.log(data.photos)
+  //   });
 }
  
 
 
  render() {
-
-
-  //  const items = this.state.songs.map((song, i ) => {
-  //  return <li item={song} key={i}/> });
+console.log(this.state.marsPhotos)
 
   //  console.log(Date.now())
     
@@ -70,12 +80,13 @@ class App extends Component {
       <h2>Music API</h2>
       <ul>
         the
-        { this.state.explanation }
       </ul>
       <Tabs 
         dailyPic={this.state.picOfTheDay} 
-        picExplan={this.state.explanation} 
+        picExplain={this.state.explanation} 
         title={this.state.title}
+        neoData={this.state.neos}
+        roverPics={this.state.marsPhotos}
       />
     </div>
     );
